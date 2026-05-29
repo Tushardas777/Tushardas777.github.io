@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Portfolio</title>
+    <!-- Imports the clean 'Inter' font used in modern design -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS DESIGN SETTINGS --- */
+        :root {
+            --bg-color: #f4f4f4; /* Light grey background */
+            --text-color: #111111; /* Near black text */
+            --accent-color: #666666; /* Grey for secondary text */
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 3rem 5%; /* Adds breathing room around the edges */
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 4rem;
+        }
+        .logo { font-weight: 700; font-size: 1.2rem; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section (The big text) */
+        .hero { margin-bottom: 6rem; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            max-width: 600px;
+        }
+
+        /* Section Labels (The little headers with the © symbol) */
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Project Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        /* Individual Project Cards */
+        .project-card {
+            aspect-ratio: 4/5;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        .project-card:hover { transform: translateY(-5px); } /* Slight lift on hover */
+        
+        .card-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .project-title { font-weight: 500; font-size: 1.2rem; }
+        .project-category { font-size: 0.9rem; color: var(--accent-color); }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- --- HTML CONTENT (Change text here!) --- -->
+    <nav>
+        <div class="logo">Your Name™</div>
+        <div class="nav-links">
+            <a href="#">Work</a>
+            <a href="#">Profile</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Pattern Dimensions and Moments that Connect.</h1>
+        <p>13+ years of digital form, sharp interactions, and relentless creative discipline.</p>
+    </header>
+
+    <section>
+        <div class="section-label">
+            <span>© Featured Projects</span>
+            <span>Creative Development</span>
+        </div>
+        
+        <div class="grid">
+            <!-- Project 1 -->
+            <a href="#" class="project-card" style="background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop') center/cover;">
+                <div class="card-content">
+                    <div class="project-title">Sonder Goods</div>
+                    <div class="project-category">Branding</div>
+                </div>
+            </a>
+            
+            <!-- Project 2 -->
+            <a href="#" class="project-card" style="background: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop') center/cover;">
+                <div class="card-content">
+                    <div class="project-title">Halo Wear</div>
+                    <div class="project-category">Web Design</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-label">
+            <span>© Capabilities</span>
+            <span>Digital Execution</span>
+        </div>
+        
+        <div class="grid">
+            <div>
+                <h3 style="margin-bottom: 1rem;">Art Direction</h3>
+                <p style="color: var(--accent-color);">We guide every visual decision from start to finish, ensuring clarity, emotion, and impact across every touchpoint.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem;">Brand Identity</h3>
+                <p style="color: var(--accent-color);">From strategy to execution, we shape consistent brand systems that speak clearly and feel uniquely ownable.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem;">Motion Direction</h3>
+                <p style="color: var(--accent-color);">We use motion as a design tool — adding clarity, rhythm, and energy to digital experiences with intention.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>©2024 Digital Designer. All rights reserved.</div>
+        <div class="nav-links">
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </footer>
+
+</body>
+</html>
