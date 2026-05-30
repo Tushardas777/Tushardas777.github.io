@@ -26,6 +26,12 @@ body {
     padding: 3rem 5%; 
 }
 
+html, body {
+    /* Prevents the website from ever scrolling sideways */
+    overflow-x: hidden; 
+    width: 100%;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -339,3 +345,41 @@ body.dark-theme .moon-icon { display: none; }
 #preloader.fuse-bg { background-color: transparent; pointer-events: none; }
 .preloader-hidden { visibility: hidden !important; }
 
+/* =========================================
+   MOBILE RESPONSIVE RULES (Phones & Tablets)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* 1. STACK YOUR COLUMNS */
+    /* If you have flexbox grids (like a photo next to text), force them to stack vertically */
+    .your-flex-container {
+        flex-direction: column !important;
+    }
+
+    /* 2. ADD BREATHING ROOM */
+    /* Add extra padding to the left and right so text doesn't touch the phone edges */
+    section {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+
+    /* 3. SHRINK MASSIVE FONTS */
+    h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    /* 4. FIX THE LOGO FUSION */
+    /* If your mobile logo is centered instead of on the left, the math needs the logo centered too */
+    .logo {
+        margin: 0 auto;
+    }
+}
+
+.button, .nav-link {
+    padding: 12px 24px; /* Makes it easily tappable */
+}
+
+h2.section-title {
+    /* Minimum 2rem on phones, scales with viewport width, maxes out at 4rem on desktop */
+    font-size: clamp(2rem, 5vw, 4rem); 
+}
