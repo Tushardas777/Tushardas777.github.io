@@ -53,7 +53,6 @@ const preloader = document.getElementById('preloader');
 const preloaderText = document.querySelector('.preloader-text');
 const siteLogo = document.querySelector('.logo'); 
 
-// The International Array
 const ultimateFrenzyFrames = [
     { text: "TUSHAR DAS", font: "'Unbounded', sans-serif" },      
     { text: "Tushar Das™", font: "'Syne', sans-serif" },          
@@ -85,36 +84,30 @@ if (preloader && preloaderText && siteLogo) {
     if (isRefresh || !sessionStorage.getItem('intro-played')) {
         preloader.style.display = 'flex';
         
-        // 1. Entrance Wait
         setTimeout(() => {
             preloaderText.classList.add('run-wipe');
             
-            // 2. Wipe Wait
             setTimeout(() => {
                 preloaderText.classList.add('hide-cursor', 'start-frenzy');
                 
                 let flashes = 0;
                 
-                // 3. Smooth Frenzy Loop
                 const frenzyTimer = setInterval(() => {
                     const frame = ultimateFrenzyFrames[Math.floor(Math.random() * ultimateFrenzyFrames.length)];
                     preloaderText.style.fontFamily = frame.font;
                     preloaderText.textContent = frame.text; 
                     flashes++;
                     
-                    // 4. End Glitch and Fly
                     if (flashes >= 13) {
                         clearInterval(frenzyTimer);
                         
-                        // Strip the smooth transition BEFORE math so it doesn't break coordinates
+                        // Temporarily freeze CSS to calculate math perfectly
                         preloaderText.classList.remove('start-frenzy'); 
                         preloaderText.style.transition = 'none'; 
                         
-                        // Reset to original English text
                         preloaderText.style.fontFamily = "'Inter', sans-serif";
                         preloaderText.textContent = "Tushar Das™";
                         
-                        // Prep for math
                         const textRect = preloaderText.getBoundingClientRect();
                         preloaderText.style.left = textRect.left + 'px';
                         preloaderText.style.top = textRect.top + 'px';
@@ -124,18 +117,19 @@ if (preloader && preloaderText && siteLogo) {
                         
                         preloaderText.getBoundingClientRect(); 
                         
-                        // Do the Math
                         const logoRect = siteLogo.getBoundingClientRect();
                         const moveX = logoRect.left - textRect.left;
                         const moveY = logoRect.top - textRect.top;
                         const scale = logoRect.height / textRect.height;
                         
-                        // Fly to logo
+                        // UNLOCK CSS so the flight and fade can actually happen!
+                        preloaderText.style.transition = ''; 
+                        
+                        // Trigger Fusion Flight
                         preloader.classList.add('fuse-bg');
                         preloaderText.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scale})`;
                         preloaderText.classList.add('fuse-text');
                         
-                        // Hide completely
                         setTimeout(() => {
                             preloader.classList.add('preloader-hidden');
                             sessionStorage.setItem('intro-played', 'true');
