@@ -118,28 +118,50 @@ footer {
 /* =========================================
    4. MAGIC CUSTOM CURSOR
    ========================================= */
+
+/* 1. Default for EVERYONE (including Mobile): Show standard cursor */
+* {
+    cursor: auto;
+}
+
+/* 2. Hide the custom white dot by default (for mobile) */
 .custom-cursor {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 15px; 
-    height: 15px;
-    background-color: white; 
-    border-radius: 50%; 
-    z-index: 9999; 
-    transform: translate(-50%, -50%); 
-    pointer-events: none; 
-    transition: width 0.2s ease, height 0.2s ease;
+    display: none; 
+}
 
-
-
-    /* THE MAGIC LINE: Inverts color based on background */
-    mix-blend-mode: difference; 
-} 
-.custom-cursor.hovering {
-    width: 25px; 
-    height: 25px;
-    background-color: rgb(255, 255, 255); 
+/* 3. ONLY run this if the device has a real Mouse (Desktops/Laptops) */
+@media (pointer: fine) {
+    
+    /* Turn off standard cursor */
+    * {
+        cursor: none !important;
+    }
+    
+    /* Turn on custom cursor */
+    .custom-cursor {
+        display: block; 
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 15px; 
+        height: 15px;
+        background-color: white; 
+        border-radius: 50%; 
+        z-index: 9999; 
+        transform: translate(-50%, -50%); 
+        pointer-events: none; 
+        transition: width 0.2s ease, height 0.2s ease;
+        mix-blend-mode: difference; 
+        
+        /* THE MAGIC LINE: Inverts color based on background */
+         mix-blend-mode: difference; 
+    } 
+    
+    .custom-cursor.hovering {
+        width: 25px; 
+        height: 25px;
+        background-color: rgb(255, 255, 255); 
+    }
 }
 
 /* =========================================
